@@ -1,0 +1,7 @@
+<ul>
+  <!-- @for(...) -->
+  <li *ngFor="let group of data">
+    <a [routerLink]="['/details', group.id]">{{ group.group_name }}</a>
+  </li>
+  <input type="file" class="file-upload" (change)="onFileSelected($event)">
+</ul>

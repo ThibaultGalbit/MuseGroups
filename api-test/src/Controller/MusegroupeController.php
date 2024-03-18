@@ -2,13 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\Musegroupe;
 use App\Repository\MusegroupeRepository;
 use App\Service\ImportGroup;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
@@ -17,13 +20,10 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 #[Route('/api', name: "api_")]
 class MusegroupeController extends AbstractController
 {
-    #[Route('/musegroupe', name: 'app_musegroupe', methods: ['GET'])]
-    public function index(): JsonResponse
+    #[Route('/', name: 'app_musegroupe', methods: ['GET'])]
+    public function index(): Response
     {
-        return $this->json([
-            'cle1' => 'Valeur 1',
-            'cle2' => 'Valeur 2',
-        ]);
+        return $this->render('test.html.twig');
     }
 
     #[Route('/groups', name: "app_groups_list", methods: 'GET')]
@@ -34,10 +34,23 @@ class MusegroupeController extends AbstractController
         return new JsonResponse($jsonContent, Response::HTTP_OK, [], true);
     }
 
+    #[Route('/group/{id}', name: "app_group", methods: 'GET')]
+    public function getGroup(Musegroupe $musegroupe, SerializerInterface $serializer, MusegroupeRepository $repository)
+    {
+        $group = $repository->find($musegroupe);
+        $jsonContent = $serializer->serialize($group, 'json');
+        return new JsonResponse($jsonContent, Response::HTTP_OK, [], true);
+    }
+
 
     #[Route('/import', name: "csv_import")]
-    public function importFromCsv(ImportGroup $importGroupService, #[Autowire('%upload_dir%')] string $uploadDir) : void
+    public function importFromCsv(Request $request, ImportGroup $importGroupService, #[Autowire('%upload_dir%')] string $uploadDir) : void
     {
+        //Récuperer le fichier
+
+        //Convertir xslx en csv
+
+        //Import
         $importGroupService->importGroup($uploadDir."/"."test.csv");
     }
 }

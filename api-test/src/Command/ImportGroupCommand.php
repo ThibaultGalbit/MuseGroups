@@ -19,7 +19,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 )]
 class ImportGroupCommand extends Command
 {
-
     private $groupRepository;
     private $em;
 
@@ -42,19 +41,18 @@ class ImportGroupCommand extends Command
 
                 $group = new Musegroupe();
                 $group->setGroupName($row[0]);
-                $group->setOrigine($row[1]);
+                $group->setOrigin($row[1]);
                 $group->setCity($row[2]);
                 $group->setStartDate($row[3]);
                 if ($row[4] !== "") {
                     $group->setSeparateYear($row[4]);
                 }
-                $group->setFondator($row[5]);
+                $group->setFounder($row[5]);
                 if ($row[6] !== "") {
-                    $group->setMembres($row[6]);
+                    $group->setMembers($row[6]);
                 }
-                $group->setGenre($row[7]);
+                $group->setStyle($row[7]);
                 $group->setPresentation($row[8]);
-
 
                 $this->em->persist($group);
 

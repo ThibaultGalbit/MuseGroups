@@ -18,7 +18,7 @@ class Musegroupe
     private ?string $groupName = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $origine = null;
+    private ?string $origin = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $city = null;
@@ -30,13 +30,13 @@ class Musegroupe
     private ?int $separateYear = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $fondator = null;
+    private ?string $founder = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $membres = null;
+    private ?int $members = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $genre = null;
+    private ?string $style = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $presentation = null;
@@ -58,14 +58,14 @@ class Musegroupe
         return $this;
     }
 
-    public function getOrigine(): ?string
+    public function getOrigin(): ?string
     {
-        return $this->origine;
+        return $this->origin;
     }
 
-    public function setOrigine(?string $origine): static
+    public function setOrigin(?string $origin): static
     {
-        $this->origine = $origine;
+        $this->origin = $origin;
 
         return $this;
     }
@@ -106,38 +106,38 @@ class Musegroupe
         return $this;
     }
 
-    public function getFondator(): ?string
+    public function getFounder(): ?string
     {
-        return $this->fondator;
+        return $this->founder;
     }
 
-    public function setFondator(?string $fondator): static
+    public function setFounder(?string $founder): static
     {
-        $this->fondator = $fondator;
+        $this->founder = $founder;
 
         return $this;
     }
 
-    public function getMembres(): ?int
+    public function getMembers(): ?int
     {
-        return $this->membres;
+        return $this->members;
     }
 
-    public function setMembres(?int $membres): static
+    public function setMembers(?int $members): static
     {
-        $this->membres = $membres;
+        $this->members = $members;
 
         return $this;
     }
 
-    public function getGenre(): ?string
+    public function getStyle(): ?string
     {
-        return $this->genre;
+        return $this->style;
     }
 
-    public function setGenre(?string $genre): static
+    public function setStyle(?string $style): static
     {
-        $this->genre = $genre;
+        $this->style = $style;
 
         return $this;
     }
