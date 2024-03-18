@@ -8,6 +8,8 @@ A la racine de **api-test** :
 * Composer install
 * Creation de la db (symfony console doctrine:create:database) OU utiliser le .sql fourni par email
 * symfony server:start -d
+* symfony console make:migration
+* symfony console doctrine:migration:migrate
 
 A la racine de **my-app** :
 * ng serve
